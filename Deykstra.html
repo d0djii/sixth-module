@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>A*</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header><h1>A*</h1></header>
+
+
+    <div class = "HUD"> 
+      <input placeholder="N" id="main_N">
+      <button id="main_Create" onclick="createTable()">Таблица</button>
+      <button onclick="Obstacle()">Преграда</button>
+      <button onclick="Start()">Старт</button>
+      <button onclick="Finish()">Финиш</button>
+      <button>Сброс</button>
+    </div>
+    <div class = "main_task">
+        <table id="main_dummy">
+          <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+          </tr>
+          <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+          </tr>
+          <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+          </tr>
+          <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+          </tr>
+          <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+          </tr>
+          <tr>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+            <td><div></div></td>
+          </tr>
+        </table>
+    </div>
+    <script src="deykstra.js"></script>
+</body>
+</html>
