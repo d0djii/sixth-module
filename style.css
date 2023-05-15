@@ -104,6 +104,9 @@ td > div{
 #obstacle{
     background-color: black;
 }
+#path{
+    background-color: blue;
+}
 
 
 
