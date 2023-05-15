@@ -298,7 +298,7 @@ function Star(){
                 if((coloring.getAttribute('id'))=='blank')
                 coloring.setAttribute('id','path');
             }
-            console.log("НА НАХУЙ");
+            console.log("сделал");
             return 0;
         }
         RemoveFromArray(openSet, current);
