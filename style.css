@@ -56,9 +56,49 @@ h1,h2,h3,h4,h5,h6{
     font-size: inherit; font-weight: 400;
 }
 body {
+    background-color: #3a302a;
     font-family: "Roboto", system-ui;
     font-size: 20px;
 }
+
+/*main style*/
+
+header{
+    background-color: #877c73;
+    height: 50px;
+}
+header > ul > li{
+    color: white;
+    display: inline-flex;
+    font-size: 18px;
+}
+header > ul{
+    float: right;
+
+}
+a{
+    color: white;
+    text-decoration: underline;
+}
+
+header > span{
+    padding-top: 5px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+    margin: 0 0 0 0;
+}
+
+h2{
+    padding-top: 5%;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .main_task, .HUD{
     display: flex;
     flex-flow: row wrap;
@@ -73,11 +113,11 @@ body {
     border: 1px solid; 
     margin-top: 2%; 
     border-collapse: collapse; 
-    empty-cells: show;
+    background-color: white;
 }
 
 .HUD{
-    padding-top: 10%;
+    padding-top: 2%;
 }
 
 input, button {
@@ -106,6 +146,9 @@ td > div{
 }
 #path{
     background-color: blue;
+}
+#blank{
+    background-color: white;
 }
 
 

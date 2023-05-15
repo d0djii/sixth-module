@@ -84,6 +84,16 @@ let ryad1, stroka1, ryad2, stroka2;
 
 //функция расскраски
 function Color(x){
+    //сброс покраски маршрута
+    var len = document.getElementById('main_dummy').rows.length;
+    for(i = 0; i < len; i++){
+        for(j = 0; j < len; j++){
+            let colored = document.getElementById('main_dummy').rows[i].cells[j];
+            if((colored.getAttribute('id'))=='path')
+                colored.setAttribute('id','blank')
+        }
+
+    }
     let col = x.cellIndex;
     let row = x.parentNode.rowIndex;
     let td = document.getElementById('main_dummy').rows[row].cells[col];
@@ -186,6 +196,19 @@ function Star(){
             arr[i][j].addNeighbours(arr);
         }
     }
+
+    for(i = 0; i < n; i++){
+        for(j = 0; j < n; j++){
+            var colored = document.getElementById('main_dummy').rows[j].cells[i];
+            console.log(colored);
+            if((colored.getAttribute('id'))=='obstacle'){
+                arr[i][j].obstacle = true;
+            }
+                
+        }
+
+    }
+
     console.log(arr);
 
 
@@ -198,6 +221,7 @@ function Star(){
         this.h = 0;
         this.neighbours = [];
         this.previous = undefined;
+        this.obstacle = false;
     
         this.addNeighbours = function (arr) {
             var i = this.i;
@@ -226,7 +250,7 @@ function Star(){
         var d = Math.abs(a.i - b.i) + Math.abs(a.j - b.j);
         return d;
     }
-    
+
     var start = document.getElementById('start');
     var tempend = document.getElementById('finish');
     console.log(start);
@@ -267,9 +291,10 @@ function Star(){
             }
         }
         var current = openSet[winner];
-        if(openSet[winner] == end){
+        if(openSet[winner] === end){
             for(var i = path.length-1; i >= 0; i--){
                 let coloring = document.getElementById('main_dummy').rows[path[i].j].cells[path[i].i];
+                console.log('krasim: ', coloring);
                 if((coloring.getAttribute('id'))=='blank')
                 coloring.setAttribute('id','path');
             }
@@ -282,32 +307,44 @@ function Star(){
         for(var i = 0; i < neighbours.length; i++){
             var neighbour = neighbours[i];
 
-            if(!closedSet.includes(neighbour)){
+            if(!closedSet.includes(neighbour) && !neighbour.obstacle){
                 var tempg = current.g + 1;
 
+                var newpath = false;
                 if(openSet.includes(neighbour)){
                     if(tempg < neighbour.g){
                         neighbour.g = tempg;
+                        newpath = true;
                     }
 
                 }
                 else {
                     neighbour.g = tempg;
+                    newpath = true;
                     openSet.push(neighbour);
                 }
+                if(newpath){
                 neighbour.h = do_Math(neighbour, end);
                 neighbour.f = neighbour.g + neighbour.h;
                 neighbour.previous = current;
+                }
+                
             }
         }
+        
         path = [];
         var temp = current;
         path.push(temp);
         while(temp.previous){
             path.push(temp.previous);
             temp = temp.previous;
-        }  
+        }
+        if(path.length < 1){
+            alert("Нет пути");
+            return 0;
+        }
         console.log(path);
         console.log(closedSet);
     }
+
 }
